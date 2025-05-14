@@ -6,8 +6,11 @@ let startTime;
 
 // Generate a random position for the box within the window
 function moveBox() {
-  const maxX = window.innerWidth - 100;
-  const maxY = window.innerHeight - 100;
+  const boxWidth = box.offsetWidth;
+  const boxHeight = box.offsetHeight;
+
+  const maxX = window.innerWidth - boxWidth;
+  const maxY = window.innerHeight - boxHeight;
 
   const randomX = Math.random() * maxX;
   const randomY = Math.random() * maxY;
