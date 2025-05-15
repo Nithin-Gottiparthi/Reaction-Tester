@@ -1,31 +1,6 @@
-/* Center everything */
-body, html {
-  height: 100%;
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-}
-
-#game-container {
-  text-align: center;
-  width: 100%;
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
-}
-
-#box {
-  width: 100px;
-  height: 100px;
-  background-color: teal;
-  position: absolute;
-  display: none;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-#result {
-  font-size: 1.2rem;
-  color: #333;
-  margin-top: 20px;
+#shape {
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    position: relative;
 }
