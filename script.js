@@ -1,58 +1,32 @@
-// Reference DOM elements
-const box = document.getElementById("box");
-const result = document.getElementById("result");
-
-let startTime;
-
-// Generate a random position for the box within the window
-function moveBox() {
-  const boxWidth = box.offsetWidth;
-  const boxHeight = box.offsetHeight;
-
-  const maxX = window.innerWidth - boxWidth;
-  const maxY = window.innerHeight - boxHeight;
-
-  const randomX = Math.random() * maxX;
-  const randomY = Math.random() * maxY;
-
-  box.style.left = `${randomX}px`;
-  box.style.top = `${randomY}px`;
-}
-
-// Show the box after a random delay
-function showBoxWithDelay() {
-  const delay = Math.random() * 2000 + 1000; // 1 to 3 seconds
-  setTimeout(() => {
-    moveBox();
-    box.style.display = "block";
-    startTime = new Date().getTime();
-  }, delay);
-}
-
-// Calculate and show reaction time
-box.addEventListener("click", () => {
-  const clickTime = new Date().getTime();
-  const reactionTime = (clickTime - startTime) / 1000;
-
-  result.textContent = `Your reaction time: ${reactionTime.toFixed(3)} seconds`;
-
-  // Change box color for visual feedback
-  box.style.backgroundColor = getRandomColor();
-  box.style.display = "none";
-
-  // Show next box after delay
-  showBoxWithDelay();
-});
-
-// Utility: Random color generator
+var start = new Date().getTime();
 function getRandomColor() {
-  const letters = "0123456789ABCDEF";
-  let color = "#";
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.round(Math.random() * 15)];
+    }
+    return color;
 }
-
-// Start the game
-showBoxWithDelay();
+function move() {
+    var left;
+    var top;
+    var wh;
+    left = Math.random() * 300;
+    top = Math.random() * 300;
+    wh = ((Math.random() * 400) + 100);
+    document.getElementById("shape").style.left = left + "px";
+    document.getElementById("shape").style.top = top + "px";
+    document.getElementById("shape").style.width = wh + "px";
+    document.getElementById("shape").style.height = wh + "px";
+    document.getElementById("shape").style.display = "block";
+    document.getElementById("shape").style.backgroundColor = getRandomColor();
+    start = new Date().getTime();
+}
+move();
+document.getElementById("shape").onclick = function () {
+    document.getElementById("shape").style.display = "none";
+    var end = new Date().getTime();
+    var timeTaken = (end - start) / 1000;
+    alert(timeTaken);
+    move();
+}
