@@ -15,7 +15,7 @@ function move() {
     top = Math.random() * 300;
     wh = ((Math.random() * 400) + 100);
     document.getElementById("shape").style.left = left + "px";
-    document.getElementById("shape").style.top = top + "px";
+    document.getElementById("shape").style.right = top + "px";
     document.getElementById("shape").style.width = wh + "px";
     document.getElementById("shape").style.height = wh + "px";
     document.getElementById("shape").style.display = "block";
