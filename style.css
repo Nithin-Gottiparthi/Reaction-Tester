@@ -3,4 +3,5 @@
     height: 200px;
     background-color: red;
     position: absolute;
+    display: none;
 }
