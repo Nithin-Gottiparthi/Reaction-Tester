@@ -1,32 +1,36 @@
 var start = new Date().getTime();
-        function getRandomcolor(){
-            var letters = '0123456789ABCDEf'.split('');
-            var color = '#';
-            for(var i=0;i<6;i++){
-                color += letters[Math.round(Math.random() * 15)];
-            }
-            return color;
-        }
-        function move(){
-            var left;
-            var top;
-            var wh;
-            left = Math.random() * 300;
-            top  =  Math.random()* 300;
-            wh = ((Math.random()* 400) + 100);
-            document.getElementById("shape").style.left = left + "px"; 
-            document.getElementById("shape").style.top = top + "px"; 
-            document.getElementById("shape").style.width = wh + "px"; 
-            document.getElementById("shape").style.height = wh + "px";
-            document.getElementById("shape").style.display= "block";
-            document.getElementById("shape").style.backgroundColor=getRandomcolor();  
-            start = new Date().getTime();
-        }
-        move();
-        document.getElementById("shape").onclick = function(){
-            document.getElementById("shape").style.display="none";
-            var end = new Date().getTime();
-            var timeTaken = (end - start) / 1000;
-            document.getElementsByClassName('p')[0].innerHTML="your reaction time:" +timeTaken+"minutes";
-            move();
-        }
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+function move() {
+    var shape = document.getElementById("shape");
+    var left = Math.random() * (window.innerWidth - 200); // Keep it within the screen
+    var top = Math.random() * (window.innerHeight - 200);
+    var wh = Math.random() * 200 + 100;
+
+    shape.style.left = left + "px";
+    shape.style.top = top + "px";
+    shape.style.width = wh + "px";
+    shape.style.height = wh + "px";
+    shape.style.display = "block";
+    shape.style.backgroundColor = getRandomColor();
+
+    start = new Date().getTime();
+}
+
+document.getElementById("shape").onclick = function () {
+    document.getElementById("shape").style.display = "none";
+    var end = new Date().getTime();
+    var timeTaken = (end - start) / 1000;
+    alert("You took " + timeTaken + " seconds");
+    move();
+};
+
+move();
